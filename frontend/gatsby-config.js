@@ -1,9 +1,8 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
-    siteUrl: `https://gatsbystarterdefaultsource.gatsbyjs.io/`,
+    title: `Cake It!`,
+    description: `Gatsby & Wordpress as a headless CMS`,
+    author: `@augustyn1331 - Augustyn Głowacki`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -29,6 +28,25 @@ module.exports = {
         // theme_color: `#663399`,
         display: `minimal-ui`,
         icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+      },
+    },
+    {
+      resolve: `gatsby-source-wordpress`,
+      options: {
+        url: `http://cakeit.local/graphql`,
+        schema: {
+          timeout: 40000,
+          perPage: 50,
+          requestConcurrency: 50,
+        },
+      },
+    },
+    `gatsby-plugin-styled-components`,
+    {
+      resolve: `gatsby-plugin-google-fonts`,
+      options: {
+        fonts: [`Teko\:200, 400, 500, 600, 700`],
+        display: `swap`,
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
