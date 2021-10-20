@@ -1,7 +1,7 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
-export const NavigationWrapper = styled.nav`
-  font-family: 'Teko', Arial, Helvetica, sans-serif;
+export const Wrapper = styled.nav`
+  font-family: "Teko", Arial, Helvetica, sans-serif;
   text-transform: uppercase;
   color: #212121;
   font-size: 1rem;
@@ -14,17 +14,16 @@ export const NavigationWrapper = styled.nav`
   }
 
   @media (min-width: 992px) {
-    font-size: 0.85rem;
     display: block;
   }
 
   @media (min-width: 1200px) {
-    font-size: 1rem;
+    font-size: 1.2rem;
   }
 
   ul li {
     display: block;
-    margin: 0 10px 0 0;
+    margin: 0 30px 0 0;
     float: left;
     height: 30px;
     position: relative;

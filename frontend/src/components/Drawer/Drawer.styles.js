@@ -1,12 +1,11 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
-export const Overlay = styled.div`
+export const StyledDrawer = styled.div`
   width: 100%;
   height: 100%;
   position: fixed;
-  opacity: ${props => (props.menuOpen ? '1' : '0')};
-  transform: ${props =>
-    props.menuOpen ? 'translateX(0%)' : 'translateX(-100%)'};
+  opacity: ${props => (props.open ? "1" : "0")};
+  transform: ${props => (props.open ? "translateX(0%)" : "translateX(-100%)")};
   z-index: 100000;
   background: #fff;
   left: 0px;
@@ -29,7 +28,7 @@ export const Overlay = styled.div`
       margin: 0 0 60px 0;
     }
 
-    .overlayMenu {
+    .drawerMenu {
       text-align: center;
       list-style-type: none;
       margin: 0;
@@ -38,12 +37,12 @@ export const Overlay = styled.div`
         margin: 0 0 20px 0;
       }
 
-      li.overlayActive {
+      li.drawerActive {
         color: #ee2562;
       }
 
       a {
-        font-family: 'Teko', Arial, Helvetica, sans-serif;
+        font-family: "Teko", Arial, Helvetica, sans-serif;
         font-size: 2rem;
         color: #fff;
         transition: all 0.3s ease;
