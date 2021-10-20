@@ -1,0 +1,12 @@
+node_modules/
+
+wordpress/conf/
+wordpress/logs/
+wordpress/app/sql/*
+wordpress/app/public/*
+!wordpress/app/public/wp-content/
+!wordpress/app/public/wp-content/*
+wordpress/app/public/wp-content/mu-plugins/
+wordpress/app/public/wp-content/plugins/
+wordpress/app/public/wp-content/uploads/
+!wordpress/app/public/wp-content/themes/
