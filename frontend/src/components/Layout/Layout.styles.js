@@ -1,7 +1,13 @@
-import styled, { createGlobalStyle } from 'styled-components'
+import styled, { createGlobalStyle } from "styled-components";
 
 export const Primary = styled.main`
-  padding: 110px 0 0 0;
+  padding: 110px 0 150px 0;
+  @media only screen and (min-width: 992px) {
+    padding: 110px 0 120px 0;
+  }
+`;
+export const Wrapper = styled.div`
+  position: relative;
 `;
 
 export const GlobalStyles = createGlobalStyle`

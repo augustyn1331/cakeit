@@ -1,5 +1,9 @@
 import styled from "styled-components";
 
+export const StyledImg = styled.img`
+  height: 42px;
+`;
+
 export const Wrapper = styled.header`
   background: #fdf3fa;
   height: 110px;

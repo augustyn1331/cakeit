@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { GlobalStyles, Primary } from "./Layout.styles";
+import { GlobalStyles, Primary, Wrapper } from "./Layout.styles";
 import Hamburger from "../Hamburger/Hamburger";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
@@ -12,14 +12,14 @@ const Layout = ({ children }) => {
     setDrawerOpen(prev => !prev);
   };
   return (
-    <>
+    <Wrapper>
       <GlobalStyles />
       <Hamburger toggleDrawer={toggleDrawer} />
       <Drawer open={drawerOpen} toggleDrawer={toggleDrawer} />
       <Header />
       <Primary>{children}</Primary>
       <Footer />
-    </>
+    </Wrapper>
   );
 };
 

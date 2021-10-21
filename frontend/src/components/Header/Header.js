@@ -3,7 +3,7 @@ import { Link } from "gatsby";
 import Navigation from "../Navigation/Navigation";
 import logo from "../../images/logo.svg";
 import { useMenuQuery } from "../../hooks/useMenuQuery";
-import { Wrapper, Content } from "./Header.styles";
+import { Wrapper, Content, StyledImg } from "./Header.styles";
 
 const Header = () => {
   const { site, menu } = useMenuQuery();
@@ -11,7 +11,7 @@ const Header = () => {
     <Wrapper>
       <Content>
         <Link to="/">
-          <img src={logo} alt={site.siteMetadata.title} />
+          <StyledImg src={logo} alt={site.siteMetadata.title} />
         </Link>
         <Navigation menu={menu.menuItems.nodes} />
       </Content>
