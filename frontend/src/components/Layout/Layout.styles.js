@@ -8,6 +8,7 @@ export const Primary = styled.main`
 `;
 export const Wrapper = styled.div`
   position: relative;
+  min-height: 100vh;
 `;
 
 export const GlobalStyles = createGlobalStyle`

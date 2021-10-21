@@ -16,7 +16,7 @@ const Navigation = ({ menu }) => {
         </Link>
         {dropdown && (
           <ul>
-            {childItems.nodes.map(item => (
+            {[...childItems.nodes].reverse().map(item => (
               <li key={item.id}>
                 <Link to={item.url} activeClassName="nav-active">
                   {item.label}
