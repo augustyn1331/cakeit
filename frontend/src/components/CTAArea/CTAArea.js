@@ -16,7 +16,6 @@ const CtaArea = () => {
       text={cta.ACF_HomePage[`cta${i + 1}Text`]}
     />
   ));
-  console.log(filledArray);
   return <Wrapper>{filledArray}</Wrapper>;
 };
 
