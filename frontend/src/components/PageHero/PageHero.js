@@ -1,6 +1,9 @@
-import React from "react"
-import { StyledImg } from "./PageHero.styles"
+import React from "react";
+import { Wrapper, StyledImg } from "./PageHero.styles";
+const PageHero = ({ img }) => (
+  <Wrapper>
+    <StyledImg image={img} alt="Hero Image" />
+  </Wrapper>
+);
 
-const PageHero = ({ img }) => <StyledImg image={img} alt="Page Hero" />
-
-export default PageHero
+export default PageHero;

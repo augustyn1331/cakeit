@@ -8,7 +8,6 @@ const Hero = () => {
     wpPage: { ACF_HomePage: data },
   } = useHeroQuery();
 
-  console.log(data);
   const imageData = getImage(data.heroImage.localFile);
 
   return (
