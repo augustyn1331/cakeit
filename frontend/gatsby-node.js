@@ -10,7 +10,7 @@ const path = require("path");
 
 exports.createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions;
-  const archiveTemplate = path.resolve("./src/templates/achive.js");
+  const archiveTemplate = path.resolve("./src/templates/archive.js");
   const result = await graphql(`
     {
       wp {
@@ -54,7 +54,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
             catId: id,
             catName: name,
             catUri: uri,
-            categories: allWpCategory,
+            categories: allWpCategory.edges,
           },
         });
       });
