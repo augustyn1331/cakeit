@@ -1,8 +1,8 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const Wrapper = styled.aside`
   margin: 40px 0 0 0;
-  min-width:25%;
+  min-width: 25%;
 
   @media (min-width: 992px) {
     margin: 125px 15px 0 0;
@@ -29,10 +29,9 @@ export const Menu = styled.ul`
   }
 
   .sidebar-menu-header {
-    font-family: 'Teko', Arial, Helvetica, sans-serif;
+    font-family: "Lato", Arial, Helvetica, sans-serif;
     border-bottom: 2px #e4e4e4 solid;
     font-weight: 600;
-    letter-spacing: 1px;
     margin: 0 0 20px 0;
     padding: 0 0 5px 0;
     text-transform: uppercase;
@@ -41,10 +40,9 @@ export const Menu = styled.ul`
   li {
     margin: 0 0 5px 0px;
     color: #000;
-    font-family: 'Teko', Arial;
+    font-family: "Lato", Arial;
     font-size: 20px;
     font-weight: 400;
-    letter-spacing: 1px;
 
     a:hover {
       color: #ee2562;
@@ -58,7 +56,6 @@ export const Menu = styled.ul`
   p {
     font-size: 0.85rem;
     line-height: 1.2rem;
-    letter-spacing: 0.5px;
 
     a {
       font-weight: 800;

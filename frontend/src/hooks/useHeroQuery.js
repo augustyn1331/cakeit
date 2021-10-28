@@ -9,6 +9,8 @@ export const useHeroQuery = () => {
           heroText
           heroImage {
             localFile {
+              publicURL
+              extension
               childImageSharp {
                 gatsbyImageData(width: 1920, placeholder: TRACED_SVG)
               }

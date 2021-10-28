@@ -41,9 +41,9 @@ export const CTAImageTextWrapper = styled.div`
 
 export const CTAImageText = styled.p`
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
-  font-family: "Teko";
-  font-weight: 700;
-  letter-spacing: 1.5px;
+  font-family: "Lato";
+  font-weight: 600;
+  letter-spacing: 1px;
   font-size: 1.3rem;
   text-transform: uppercase;
   margin: 0px;
@@ -57,9 +57,5 @@ export const CTAImageText = styled.p`
 
   @media (min-width: 992px) {
     font-size: 1.3rem;
-  }
-
-  @media (min-width: 1200px) {
-    font-size: 1.5rem;
   }
 `;

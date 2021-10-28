@@ -42,7 +42,7 @@ export const StyledDrawer = styled.div`
       }
 
       a {
-        font-family: "Teko", Arial, Helvetica, sans-serif;
+        font-family: "Lato", Arial, Helvetica, sans-serif;
         font-size: 2rem;
         color: #fff;
         transition: all 0.3s ease;

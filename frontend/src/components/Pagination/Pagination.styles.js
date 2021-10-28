@@ -1,10 +1,10 @@
-import styled from "styled-components"
+import styled from "styled-components";
 
 export const Wrapper = styled.nav`
   display: flex;
   justify-content: space-between;
   flex-direction: ${props => (props.isFirst ? "row-reverse" : "row")};
-  font-family: "Teko", Arial, Helvetica, sans-serif;
+  font-family: "Lato", Arial, Helvetica, sans-serif;
   font-size: 1rem;
   font-weight: 800;
 
@@ -75,4 +75,4 @@ export const Wrapper = styled.nav`
       border-left-color: #ee2562;
     }
   }
-`
+`;
