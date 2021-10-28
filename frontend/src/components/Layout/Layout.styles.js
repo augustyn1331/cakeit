@@ -1,4 +1,5 @@
 import styled, { createGlobalStyle } from "styled-components";
+import tw from "twin.macro";
 
 export const Primary = styled.main`
   padding: 110px 0 150px 0;

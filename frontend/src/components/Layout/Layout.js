@@ -6,11 +6,6 @@ import Footer from "../Footer/Footer";
 import Drawer from "../Drawer/Drawer";
 import { motion } from "framer-motion";
 
-const variants = {
-  hidden: { opacity: 0, x: -100, y: 0 },
-  enter: { opacity: 1, x: 0, y: 0 },
-  exit: { opacity: 0, x: 0, y: -100 },
-};
 const Layout = ({ children }) => {
   const [drawerOpen, setDrawerOpen] = useState(false);
 
@@ -25,13 +20,14 @@ const Layout = ({ children }) => {
       <Header />
       <motion.main
         key={`motion-${Math.random(0, 99999)}`}
-        variants={variants} // Pass the variant object into Framer Motion
-        initial="hidden" // Set the initial state to variants.hidden
-        animate="enter" // Animated state to variants.enter
-        exit="exit" // Exit state (used later) to variants.exit
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
         transition={{
-          type: "linear",
-          default: { duration: 0.35 },
+          type: "spring",
+          mass: 0.35,
+          stiffness: 75,
+          default: { duration: 0.15 },
         }}
       >
         <Primary>{children}</Primary> <Footer />
