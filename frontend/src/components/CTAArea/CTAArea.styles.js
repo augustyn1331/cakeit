@@ -6,7 +6,7 @@ export const Wrapper = styled.div`
   grid-gap: 20px;
   max-width: 1180px;
   margin: 20px auto 80px auto;
-  padding: 0 20px;
+  padding: 100px 20px 0px 20px;
 
   @media screen and (min-width: 768px) {
     grid-template-columns: 1fr 1fr 1fr;

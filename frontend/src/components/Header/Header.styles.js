@@ -8,6 +8,9 @@ export const Wrapper = styled.header`
   background: #fdf3fa;
   height: 110px;
   border-bottom: 1px solid #e7e7e7;
+  @media (min-width: 768px) {
+    border-bottom: 1px solid #e7e7e7;
+  }
   position: fixed;
   width: 100%;
   z-index: 10000;

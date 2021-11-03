@@ -16,6 +16,7 @@ module.exports = {
       red: "#E30B5C",
       white: "#FFFFFF",
       black: "#000000",
+      purple: "#4c4981",
     },
     screens: {
       xs: "480px",

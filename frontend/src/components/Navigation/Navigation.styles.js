@@ -17,7 +17,7 @@ export const Wrapper = styled.nav`
   }
 
   @media (min-width: 1200px) {
-    font-size: 1.2rem;
+    font-size: 1.4rem;
   }
 
   ul li {

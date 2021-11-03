@@ -1,40 +1,91 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { getImage } from "gatsby-plugin-image";
 import { useHeroQuery } from "../../hooks/useHeroQuery";
 import tw, { styled } from "twin.macro";
 import { GatsbyImage } from "gatsby-plugin-image";
 import parse from "html-react-parser";
+import bg from "../../images/bg.svg";
+import CakeSVG from "../../assets/cake.svg";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const Hero = () => {
   const {
     wpPage: { ACF_HomePage: data },
   } = useHeroQuery();
-  const publicURL = data.heroImage.localFile.publicURL;
-  const isSvg = data.heroImage.localFile.extension === "svg";
+  // const publicURL = data.heroImage.localFile.publicURL;
+  // const isSvg = data.heroImage.localFile.extension === "svg";
 
-  console.log(
-    data.heroImage.localFile.publicURL,
-    data.heroImage.localFile.extension
-  );
-
-  const getHero = () => {
-    if (isSvg) {
-      return <StyledSVG src={publicURL} alt="Hero Image" />;
+  const [refVisible, setRefVisible] = useState(false);
+  const triggerElement = useRef(null);
+  const cakeRef = useRef(null);
+  // console.log(cakeRef.current);
+  // console.log(cakeRef.current?.children[0].getElementsByClassName("balloons"));
+  // console.log(cakeRef.current?.children[0].getElementById("candles"));
+  // console.log(cakeRef.current?.children[0].getElementById("people"));
+  // for (let item of cakeRef.current?.children[0].children) {
+  //   // code to be executed
+  // }
+  useEffect(() => {
+    if (!refVisible) {
+      return;
     }
-    if (!isSvg) {
-      return (
-        <StyledImg
-          image={getImage(data.heroImage.localFile)}
-          alt="Hero Image"
-        />
+    const balloons =
+      cakeRef.current?.children[0].getElementsByClassName("balloons");
+    const candles = cakeRef.current?.children[0].getElementById("candles");
+    const people = cakeRef.current?.children[0].getElementById("people");
+    console.log("useeffect", balloons, candles, people);
+    const timeLine1 = gsap.timeline({});
+    timeLine1
+      .set([...balloons, candles, people], { autoAlpha: 0 })
+      .fromTo(
+        people,
+        { autoAlpha: 0, x: "-=100" },
+        { autoAlpha: 1, x: "0", duration: 1 }
+      )
+      .fromTo(
+        candles,
+        { autoAlpha: 0, y: "+=20" },
+        { autoAlpha: 1, y: "0", duration: 0.6 }
+      )
+      .fromTo(
+        balloons,
+        { autoAlpha: 0, y: "+=100" },
+        { autoAlpha: 1, y: "0", duration: 0.8 }
       );
-    }
-  };
 
+    // detected rendering
+  }, [refVisible]);
+
+  // const getHero = () => {
+  //   // if (isSvg) {
+  //   //   return <StyledSVG src={publicURL} alt="Hero Image" />;
+  //   // }
+  //   // if (!isSvg) {
+  //   //   return (
+  //   //     <StyledImg
+  //   //       image={getImage(data.heroImage.localFile)}
+  //   //       alt="Hero Image"
+  //   //     />
+  //   //   );
+  //   // }
+  //   // Getting svg from local files, it has special groups for animation
+  //   return <StyledSVG ref={cakeRef} />;
+  // };
+  setTimeout(() => setRefVisible(true), 100);
   return (
-    <Wrapper>
-      {getHero()}
-      <StyledH1>{parse(data.heroText)}</StyledH1>
+    <Wrapper ref={triggerElement}>
+      <StyledDiv>
+        <div ref={element => (cakeRef.current = element)}>
+          <StyledSVG />
+        </div>
+      </StyledDiv>
+      <StyledDiv>
+        <StyledH1>{parse(data.heroText)}</StyledH1>
+      </StyledDiv>
+      <StyledBackground src={bg} />
     </Wrapper>
   );
 };
@@ -42,32 +93,25 @@ const Hero = () => {
 export default Hero;
 
 export const Wrapper = styled.div`
-  ${tw`
-        relative min-h-[calc(100vh - 110px)] flex flex-col justify-center items-center md:flex-row
-    `}
+  ${tw`relative min-h-[calc(100vh - 110px)] flex flex-col-reverse justify-center items-center md:flex-row`}
+`;
+const StyledDiv = styled.div`
+  ${tw`flex justify-center items-center px-8`}
 `;
 
-const StyledSVG = styled.img`
-  ${tw`
-  relative h-2/5 w-2/5 mx-16
-    `}
+const StyledBackground = styled.img`
+  ${tw`absolute z-[-999] md:w-full max-w-none translate-y-[-250px] 2xl:translate-y-[-430px] object-cover`}
 `;
 
+const StyledSVG = styled(CakeSVG)`
+  ${tw`relative min-w-[250px] w-[70vw] max-w-[300px] lg:w-auto lg:max-w-[100%] lg:max-h-[350px] 2xl:max-h-[400px]`}
+`;
 const StyledImg = styled(GatsbyImage)`
-  ${tw`
- w-full mb-16
-    `}
-  max-height: 600px;
+  ${tw` w-full mb-16 flex-1 max-h-[600px]`}
 `;
 const StyledH1 = styled.h1`
-  ${tw`
-  mx-16 text-center
-    `}
-  font-size: 2rem;
-  font-weight: 600;
-  color: black;
-
-  @media screen and (min-width: 768px) {
-    font-size: 3rem;
+  ${tw` mr-4 ml-4 mb-[12vh] md:mb-0 p-4 text-left leading-tight normal-case text-[2.8rem] lg:text-[3.5rem] xl:text-[4rem] 2xl:text-[4.5rem] font-bold text-purple `}
+  span {
+    ${tw`text-red font-extrabold lg:text-[4rem] xl:text-[4.5rem] 2xl:text-[5rem]`}
   }
 `;
