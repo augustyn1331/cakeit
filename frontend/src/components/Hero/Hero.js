@@ -9,6 +9,22 @@ import CakeSVG from "../../assets/cake.svg";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
+// const getHero = () => {
+//   // if (isSvg) {
+//   //   return <StyledSVG src={publicURL} alt="Hero Image" />;
+//   // }
+//   // if (!isSvg) {
+//   //   return (
+//   //     <StyledImg
+//   //       image={getImage(data.heroImage.localFile)}
+//   //       alt="Hero Image"
+//   //     />
+//   //   );
+//   // }
+//   // Getting svg from local files, it has special groups for animation
+//   return <StyledSVG ref={cakeRef} />;
+// };
+
 gsap.registerPlugin(ScrollTrigger);
 
 const Hero = () => {
@@ -18,25 +34,14 @@ const Hero = () => {
   // const publicURL = data.heroImage.localFile.publicURL;
   // const isSvg = data.heroImage.localFile.extension === "svg";
 
-  const [refVisible, setRefVisible] = useState(false);
   const triggerElement = useRef(null);
   const cakeRef = useRef(null);
-  // console.log(cakeRef.current);
-  // console.log(cakeRef.current?.children[0].getElementsByClassName("balloons"));
-  // console.log(cakeRef.current?.children[0].getElementById("candles"));
-  // console.log(cakeRef.current?.children[0].getElementById("people"));
-  // for (let item of cakeRef.current?.children[0].children) {
-  //   // code to be executed
-  // }
+
   useEffect(() => {
-    if (!refVisible) {
-      return;
-    }
     const balloons =
       cakeRef.current?.children[0].getElementsByClassName("balloons");
     const candles = cakeRef.current?.children[0].getElementById("candles");
     const people = cakeRef.current?.children[0].getElementById("people");
-    console.log("useeffect", balloons, candles, people);
     const timeLine1 = gsap.timeline({});
     timeLine1
       .set([...balloons, candles, people], { autoAlpha: 0 })
@@ -55,30 +60,12 @@ const Hero = () => {
         { autoAlpha: 0, y: "+=100" },
         { autoAlpha: 1, y: "0", duration: 0.8 }
       );
+  }, []);
 
-    // detected rendering
-  }, [refVisible]);
-
-  // const getHero = () => {
-  //   // if (isSvg) {
-  //   //   return <StyledSVG src={publicURL} alt="Hero Image" />;
-  //   // }
-  //   // if (!isSvg) {
-  //   //   return (
-  //   //     <StyledImg
-  //   //       image={getImage(data.heroImage.localFile)}
-  //   //       alt="Hero Image"
-  //   //     />
-  //   //   );
-  //   // }
-  //   // Getting svg from local files, it has special groups for animation
-  //   return <StyledSVG ref={cakeRef} />;
-  // };
-  setTimeout(() => setRefVisible(true), 100);
   return (
     <Wrapper ref={triggerElement}>
       <StyledDiv>
-        <div ref={element => (cakeRef.current = element)}>
+        <div ref={cakeRef}>
           <StyledSVG />
         </div>
       </StyledDiv>
@@ -96,7 +83,7 @@ export const Wrapper = styled.div`
   ${tw`relative min-h-[calc(100vh - 110px)] flex flex-col-reverse justify-center items-center md:flex-row`}
 `;
 const StyledDiv = styled.div`
-  ${tw`flex justify-center items-center px-8`}
+  ${tw`flex items-center justify-center px-8`}
 `;
 
 const StyledBackground = styled.img`
